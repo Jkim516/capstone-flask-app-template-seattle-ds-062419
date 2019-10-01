@@ -5,12 +5,11 @@
     <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap.min.css') }}">
 </head>
 <body>
-    {% if answer == True %}
-        For user {{user_id}}, we predict that they should make a transaction
-    {% else %}
-        For user {{user_id}}, we predict that they should not make a transaction
-    {% endif %}
+    {{station}}
     <br>
+    {{lat, lng}}
+    <br>
+    <iframe src="{{ url_for('static', filename='markers.html')}}" frameborder="0" height="600", width="1000"></iframe>
 
     <a href="/">Go back home</a>
 </body>

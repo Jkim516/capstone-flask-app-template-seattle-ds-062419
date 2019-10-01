@@ -6,7 +6,7 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3">My Awesome Capstone Project</h1>
+        <h1 class="display-3">Ride N' Bike</h1>
         <p>
           Current time: {{time_info}}
         </p>
@@ -15,7 +15,7 @@
         </p>
         <p>
           <form action="/get_results" method="post">
-            Input a number: <input type="text" name="number">
+            <!-- Input a number: <input type="text" name="number">
             <br>
             User: <select name="user">
               <option value="2206066431492096327">Nicole Andrews</option>
@@ -31,8 +31,16 @@
               {% for restaurant in restaurants %}
                 <option value="{{ restaurant }}">{{ restaurant }}</option>
               {% endfor %}
+            </select> -->
+            <br>
+            station:
+            <select name="station">
+              {% for row in reader %}
+              <option value="{{ row['station'] }}">{{ row['name'] }}</option>
+              {% endfor %}
             </select>
             <br>
+            </select>
             <input type="submit" class="btn btn-primary btn-lg" value="A button">
           </form>
         </p>
