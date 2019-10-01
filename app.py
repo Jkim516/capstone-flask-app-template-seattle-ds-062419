@@ -5,6 +5,7 @@ import pandas as pd
 from function import make_map
 import csv
 import json
+from waitress import serve
 
 app = Flask(__name__, static_url_path="/static")
 
@@ -35,8 +36,8 @@ def index():
 #     return folium_map._repr_html_()
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
 @app.route("/get_results", methods=["POST"])
 
@@ -67,6 +68,8 @@ def get_results():
         return folium_map._repr_html_()
 
 
+if __name__ == "__main__":
+    serve(app, host='0.0.0.0', port=5000)
 
 # def should_make_transaction(user_id):
 #     return False
