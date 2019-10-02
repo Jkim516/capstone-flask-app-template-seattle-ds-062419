@@ -6,13 +6,23 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-3">Ride N' Bike</h1>
+        <h1 class="display-3">Bike N' Ride</h1>
+        Forecasting Demand for Metro Bikeshare in LA Downtown Metro
+        <br>
+        Jungmo Kim - Data Scientist
+        <br>
+        <br>
+        Urban bikeshare systems are a wonderful way to get around a city. 
+        Bikeshare is a great transit option for both commuter and tourist.
+        However, it can be a frustrating experience to arrive at the station and discover that
+        there are no bikes available. The Bike N' Ride app provides not only live station status, but 
+        also forecasted number of bikes available next hour on each stations.
         <p>
-          Current time: {{time_info}}
+        <br>
+          How many Bikes will be available?
         </p>
-        <p>
-          Some cool content will go here
         </p>
+        Current time: {{time_info}}
         <p>
           <form action="/get_results" method="post">
             <!-- Input a number: <input type="text" name="number">
@@ -33,7 +43,7 @@
               {% endfor %}
             </select> -->
             <br>
-            station:
+            Bike Station:
             <select name="station">
               {% for row in reader %}
               <option value="{{ row['station'] }}">{{ row['name'] }}</option>
@@ -41,7 +51,12 @@
             </select>
             <br>
             </select>
-            <input type="submit" class="btn btn-primary btn-lg" value="A button">
+            <input type="submit" class="btn btn-primary btn-lg" value="Check Availability">
+            <br>
+            <br>
+            Hourly Heatmap for bike stations based on trip start 
+            <br>
+            <iframe src="{{ url_for('static', filename='heatmaptimes.html')}}" frameborder="0" height="600", width="700"></iframe>
           </form>
         </p>
       </div>
