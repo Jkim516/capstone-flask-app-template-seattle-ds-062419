@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from time import strftime, time
+from datetime import datetime
+import pytz
 import requests
 import pandas as pd 
 from function import make_map
@@ -17,8 +19,10 @@ def index():
         reader = csv.DictReader(csvfile)
         # for row in reader:
         #     print(row)
-
-        time_str = strftime("%m/%d/%Y %H:%M", localtime())
+        tz = pytz.timezone('US/Pacific')
+        LA_now = datetime.now(tz)
+        
+        time_str = LA_now.strftime("%m/%d/%Y %H:%M")
         print(time_str)
         # stations = ["3047", "3005", "3023"]
         return render_template("index.html", time_info=time_str, reader=reader)
