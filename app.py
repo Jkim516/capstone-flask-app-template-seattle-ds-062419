@@ -18,7 +18,7 @@ def index():
         # for row in reader:
         #     print(row)
 
-        time_str = strftime("%m/%d/%Y %H:%M")
+        time_str = strftime("%m/%d/%Y %H:%M", localtime())
         print(time_str)
         # stations = ["3047", "3005", "3023"]
         return render_template("index.html", time_info=time_str, reader=reader)
