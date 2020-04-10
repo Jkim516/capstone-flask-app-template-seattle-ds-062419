@@ -24,16 +24,16 @@ def get_live_station(url):
 
 def normalize_demand_number(record):
     if record['y_hat'] >= 4.3:
-        return round(record['y_hat']) * 3
-    elif record['y_hat'] >= 3.5:
+        return round(record['y_hat']) * 4
+    elif record['y_hat'] >= 4:
         return round(record['y_hat']) * 3
     elif record['y_hat'] >= 3:
-        return round(record['y_hat']) * 2
+        return round(record['y_hat']) * 3
     elif record['y_hat'] >= 1:
         return round(record['y_hat']) * 3
-    elif record['y_hat'] >= 0.5:
+    elif record['y_hat'] >= 0.7:
         return round(record['y_hat']) * 2
-    elif record['y_hat'] >= 0.2:
+    elif record['y_hat'] >= 0.4:
         return 1
     else:
         return 0
@@ -50,9 +50,15 @@ def normalize_ys_number(record):
     else:
         return 0
 
+# def nexthour(record):
+#     if record['bikesAvailable'] - record['demand'] + record['surplus'] >= 0:
+#         return record['bikesAvailable'] - record['demand'] + record['surplus']
+#     else:
+#         return 0
+
 def nexthour(record):
-    if record['bikesAvailable'] - record['demand'] + record['surplus'] >= 0:
-        return record['bikesAvailable'] - record['demand'] + record['surplus']
+    if record['bikesAvailable'] - record['demand'] >= 0:
+        return record['bikesAvailable'] - record['demand']
     else:
         return 0
 
